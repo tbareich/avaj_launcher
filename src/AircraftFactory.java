@@ -1,10 +1,11 @@
 
-import exceptions.UnkonwnAircraftTypeException;
+import exceptions.InvalidAircraftTypeException;
+import exceptions.InvalidCoordinatesException;
 
 public abstract class AircraftFactory {
 	public static Flyable newAircraft(String type, String name, int longitude,
 			int latitude, int height)
-			throws UnkonwnAircraftTypeException {
+			throws InvalidAircraftTypeException, InvalidCoordinatesException {
 		if (type == "Baloon")
 			return new Baloon(name, new Coordinates(longitude, latitude,
 					height));
@@ -14,6 +15,9 @@ public abstract class AircraftFactory {
 		else if (type == "Helicopter")
 			return new Helicopter(name, new Coordinates(longitude, latitude,
 					height));
-		throw new UnkonwnAircraftTypeException();
+		if (longitude < 0 || latitude < 0)
+			throw new InvalidCoordinatesException();
+		throw new InvalidAircraftTypeException(
+				"Unkonwn aircraft type: " + type);
 	}
 }

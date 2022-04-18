@@ -1,7 +1,7 @@
 
 public class WeatherProvider {
 	private static WeatherProvider weatherProvider;
-	private static String[] weather = { "RAIN", "FOG", "SUN", "SNOW" };
+	private static String[] weather = { "SNOW", "RAIN", "FOG", "SUN" };
 
 	private WeatherProvider() {
 	}
@@ -23,11 +23,11 @@ public class WeatherProvider {
 			degree = rangePosition;
 		degree -= coordinates.getHeight() / 5;
 		if (degree <= 0)
-			return weather[3];
-		else if (degree <= 18)
 			return weather[0];
-		else if (degree <= 22)
+		else if (degree <= 18)
 			return weather[1];
-		return weather[2];
+		else if (degree <= 22)
+			return weather[2];
+		return weather[3];
 	}
 }

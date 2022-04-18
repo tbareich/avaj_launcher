@@ -1,6 +1,4 @@
 
-import exceptions.UnkonwnAircraftTypeException;
-
 public class Simulator {
 	public static void main(String[] args) {
 		try {
@@ -19,7 +17,7 @@ public class Simulator {
 				weatherTower.changeWeather();
 				--simulationLength;
 			}
-		} catch (UnkonwnAircraftTypeException e) {
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
