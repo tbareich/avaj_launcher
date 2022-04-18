@@ -50,5 +50,4 @@ public class Baloon extends Aircraft implements Flyable {
 		this.weatherTower = weatherTower;
 		this.weatherTower.register(this);
 	}
-
 }
