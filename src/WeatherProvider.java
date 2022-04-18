@@ -18,7 +18,7 @@ public class WeatherProvider {
 		rangePosition = Math.sqrt(Math.pow(coordinates.getLatitude(), 2)
 				+ Math.pow(coordinates.getLongitude(), 2)) % (45 * 2);
 		if (rangePosition > 45)
-			degree = 45 - (rangePosition % 45);
+			degree = 35 - (rangePosition % 45);
 		else
 			degree = rangePosition;
 		degree -= coordinates.getHeight() / 5;

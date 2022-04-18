@@ -15,7 +15,10 @@ public class Baloon extends Aircraft implements Flyable {
 		int height = this.coordinates.getHeight();
 
 		if (height < 0) {
+			System.out.println("Baloon#" + this.name + "(" + this.id + "): "
+					+ "Rahna habtin.");
 			this.weatherTower.unregister(this);
+			this.weatherTower = null;
 			return;
 		}
 		if (currentWeather == "SUN") {
@@ -27,7 +30,7 @@ public class Baloon extends Aircraft implements Flyable {
 		if (currentWeather == "RAIN") {
 			height -= 5;
 			System.out.println("Baloon#" + this.name + "(" + this.id + "): "
-					+ "Tla3 lfo9 n3amro chi stola, rah dakchi kayt9atar.");
+					+ "Tla3 lfo9 3amro stola wkhwiwhom, rah dakchi kayt9atar.");
 		}
 		if (currentWeather == "FOG") {
 			height -= 3;

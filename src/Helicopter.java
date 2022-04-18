@@ -15,6 +15,8 @@ public class Helicopter extends Aircraft implements Flyable {
 		int height = this.coordinates.getHeight();
 
 		if (height < 0) {
+			System.out.println("Helicopter#" + this.name + "(" + this.id + "): "
+					+ "Rahna habtin.");
 			this.weatherTower.unregister(this);
 			this.weatherTower = null;
 			return;
@@ -23,7 +25,7 @@ public class Helicopter extends Aircraft implements Flyable {
 			longitude += 10;
 			height += 2;
 			System.out.println("Helicopter#" + this.name + "(" + this.id + "): "
-					+ "Jahanma ka7la hadi, 7al charjam ytrachna lbard!");
+					+ "Had ljaw ghir dial chi tab7ira f saidia.");
 		}
 		if (currentWeather == "RAIN") {
 			longitude += 5;
@@ -33,12 +35,12 @@ public class Helicopter extends Aircraft implements Flyable {
 		if (currentWeather == "FOG") {
 			longitude -= 1;
 			System.out.println("Helicopter#" + this.name + "(" + this.id + "): "
-					+ "Chof wach ybanlk chi 7aja, rah ana ma9ache3 walo");
+					+ "Chof wach kaybanlk chi 7aja, rah ana ma9ache3 walo.");
 		}
 		if (currentWeather == "SNOW") {
 			height -= 12;
 			System.out.println("Helicopter#" + this.name + "(" + this.id + "): "
-					+ "Sad dak charjam wjib lmanta!");
+					+ "Sad dak charjam wjib lmanta, rah rassi znad 3liya blbard!");
 		}
 		if (height > 100)
 			height = 100;
