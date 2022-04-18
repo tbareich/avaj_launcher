@@ -14,23 +14,33 @@ public class Baloon extends Aircraft implements Flyable {
 		int latitude = this.coordinates.getLatitude();
 		int height = this.coordinates.getHeight();
 
+		if (height < 0) {
+			this.weatherTower.unregister(this);
+			return;
+		}
 		if (currentWeather == "SUN") {
 			longitude += 2;
 			height += 4;
+			System.out.println("Baloon#" + this.name + "(" + this.id + "): "
+					+ "Ahya nari 3ndak ytartagu bina hadchi!");
 		}
-		if (currentWeather == "RAIN")
+		if (currentWeather == "RAIN") {
 			height -= 5;
-		if (currentWeather == "FOG")
+			System.out.println("Baloon#" + this.name + "(" + this.id + "): "
+					+ "Tla3 lfo9 n3amro chi stola, rah dakchi kayt9atar.");
+		}
+		if (currentWeather == "FOG") {
 			height -= 3;
-		if (currentWeather == "SNOW")
+			System.out.println("Baloon#" + this.name + "(" + this.id + "): "
+					+ "Ach had dbaba, fin 7na daba?");
+		}
+		if (currentWeather == "SNOW") {
 			height -= 15;
+			System.out.println("Baloon#" + this.name + "(" + this.id + "): "
+					+ "Jib dik lmanta w ch3alina chi film ntfarjo.");
+		}
 		if (height > 100)
 			height = 100;
-		else if (height < 0) {
-			this.weatherTower.unregister(this);
-			this.weatherTower = null;
-			return;
-		}
 		this.coordinates = new Coordinates(
 				longitude, latitude, height);
 	}
@@ -38,7 +48,7 @@ public class Baloon extends Aircraft implements Flyable {
 	@Override
 	public void registerTower(WeatherTower weatherTower) {
 		this.weatherTower = weatherTower;
-		weatherTower.register(this);
+		this.weatherTower.register(this);
 	}
 
 }

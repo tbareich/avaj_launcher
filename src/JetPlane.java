@@ -14,23 +14,34 @@ public class JetPlane extends Aircraft implements Flyable {
 		int latitude = this.coordinates.getLatitude();
 		int height = this.coordinates.getHeight();
 
-		if (currentWeather == "SUN") {
-			latitude += 10;
-			height += 2;
-		}
-		if (currentWeather == "RAIN")
-			latitude += 5;
-		if (currentWeather == "FOG")
-			latitude -= 1;
-		if (currentWeather == "SNOW")
-			height -= 7;
-		if (height > 100)
-			height = 100;
-		else if (height < 0) {
+		if (height < 0) {
 			this.weatherTower.unregister(this);
 			this.weatherTower = null;
 			return;
 		}
+		if (currentWeather == "SUN") {
+			latitude += 10;
+			height += 2;
+			System.out.println("JetPlane#" + this.name + "(" + this.id + "): "
+					+ "Fhad sahd la tayra yatir wala 7maran yassir.");
+		}
+		if (currentWeather == "RAIN") {
+			latitude += 5;
+			System.out.println("JetPlane#" + this.name + "(" + this.id + "): "
+					+ "Khdam essuie-glace nchofo sma 9damna.");
+		}
+		if (currentWeather == "FOG") {
+			latitude -= 1;
+			System.out.println("JetPlane#" + this.name + "(" + this.id + "): "
+					+ "Khdam do dial dbaba la dkhol fina chi tayara.");
+		}
+		if (currentWeather == "SNOW") {
+			height -= 7;
+			System.out.println("JetPlane#" + this.name + "(" + this.id + "): "
+					+ "Ara chi zlafa dial lbissara nsakhno biha rassna.");
+		}
+		if (height > 100)
+			height = 100;
 		this.coordinates = new Coordinates(
 				longitude, latitude, height);
 	}
