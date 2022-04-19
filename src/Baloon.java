@@ -16,7 +16,7 @@ public class Baloon extends Aircraft implements Flyable {
 
 		if (height < 0) {
 			System.out.println("Baloon#" + this.name + "(" + this.id + "): "
-					+ "Rahna habtin.");
+					+ "Anhabto ghir bchwiya, lazrba 3la sla7.");
 			this.weatherTower.unregister(this);
 			this.weatherTower = null;
 			return;
@@ -25,27 +25,23 @@ public class Baloon extends Aircraft implements Flyable {
 			longitude += 2;
 			height += 4;
 			System.out.println("Baloon#" + this.name + "(" + this.id + "): "
-					+ "Ahya nari 3ndak ytartagu bina hadchi!");
-		}
-		if (currentWeather == "RAIN") {
+					+ "Chamson sata3at wa ljawo jamilon hada lyawm!");
+		} else if (currentWeather == "RAIN") {
 			height -= 5;
 			System.out.println("Baloon#" + this.name + "(" + this.id + "): "
-					+ "Tla3 lfo9 3amro stola wkhwiwhom, rah dakchi kayt9atar.");
-		}
-		if (currentWeather == "FOG") {
+					+ "3ta9 3ta9, hadchi kayt9atar.");
+		} else if (currentWeather == "FOG") {
 			height -= 3;
 			System.out.println("Baloon#" + this.name + "(" + this.id + "): "
 					+ "Ach had dbaba, fin 7na daba?");
-		}
-		if (currentWeather == "SNOW") {
+		} else if (currentWeather == "SNOW") {
 			height -= 15;
 			System.out.println("Baloon#" + this.name + "(" + this.id + "): "
-					+ "Jib dik lmanta w ch3alina chi film ntfarjo.");
+					+ "Jib dik lmanta wch3alina chi film ntfarjo.");
 		}
 		if (height > 100)
 			height = 100;
-		this.coordinates = new Coordinates(
-				longitude, latitude, height);
+		this.coordinates = new Coordinates(longitude, latitude, height);
 	}
 
 	@Override

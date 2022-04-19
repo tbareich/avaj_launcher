@@ -8,17 +8,17 @@ import exceptions.InvalidFileFormat;
 
 public class Simulator {
 	public static void main(String[] args) {
+		if (args.length != 1) {
+			System.out.println("Error: wrong length of arguments.");
+			return;
+		}
 		try {
 			WeatherTower weatherTower = new WeatherTower();
-			if (args.length != 1) {
-				System.out.println("Error: Wrong length of arguments.");
-				return;
-			}
 			int simulationLength = parseFile(args[0], weatherTower);
 			while (--simulationLength >= 0)
 				weatherTower.changeWeather();
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("Error: " + e.getMessage());
 		}
 	}
 
@@ -65,13 +65,12 @@ public class Simulator {
 				flyables.add(AircraftFactory.newAircraft(lineSplit[0],
 						lineSplit[1], Integer.parseInt(lineSplit[2]),
 						Integer.parseInt(lineSplit[3]),
-						height > 100 ? 100 : height < 0 ? 0 : height));
+						height > 100 ? 100 : height));
 				++lineIndex;
 			}
 			scanner.close();
-			for (Flyable flyable : flyables) {
+			for (Flyable flyable : flyables)
 				flyable.registerTower(weatherTower);
-			}
 			return iterations;
 		} catch (FileNotFoundException e) {
 			throw e;

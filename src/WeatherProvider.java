@@ -15,18 +15,20 @@ public class WeatherProvider {
 		double degree;
 		double rangePosition;
 
-		rangePosition = Math.sqrt(Math.pow(coordinates.getLatitude(), 2)
-				+ Math.pow(coordinates.getLongitude(), 2)) % (45 * 2);
-		if (rangePosition > 45)
-			degree = 35 - (rangePosition % 45);
+		rangePosition = Math.sqrt(
+				Math.pow(coordinates.getLatitude(), 2)
+						+ Math.pow(coordinates.getLongitude(), 2))
+				% 80;
+		if (rangePosition > 40)
+			degree = 40 - (rangePosition % 40);
 		else
 			degree = rangePosition;
-		degree -= coordinates.getHeight() / 5;
+		degree -= coordinates.getHeight() / 2;
 		if (degree <= 0)
 			return weather[0];
-		else if (degree <= 18)
+		else if (degree <= 15)
 			return weather[1];
-		else if (degree <= 22)
+		else if (degree <= 16)
 			return weather[2];
 		return weather[3];
 	}

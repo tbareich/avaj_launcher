@@ -16,7 +16,7 @@ public class JetPlane extends Aircraft implements Flyable {
 
 		if (height < 0) {
 			System.out.println("JetPlane#" + this.name + "(" + this.id + "): "
-					+ "Rahna habtin.");
+					+ "Al7afid lah.");
 			this.weatherTower.unregister(this);
 			this.weatherTower = null;
 			return;
@@ -25,27 +25,23 @@ public class JetPlane extends Aircraft implements Flyable {
 			latitude += 10;
 			height += 2;
 			System.out.println("JetPlane#" + this.name + "(" + this.id + "): "
-					+ "Ya3odo bilah 3la sahd, la tayra yatir wala 7imaran yassir.");
-		}
-		if (currentWeather == "RAIN") {
+					+ "Wach texas hadi, la tayra yatir wala 7imaran yassir.");
+		} else if (currentWeather == "RAIN") {
 			latitude += 5;
 			System.out.println("JetPlane#" + this.name + "(" + this.id + "): "
-					+ "Khdam essuie-glace nchofo 9damna.");
-		}
-		if (currentWeather == "FOG") {
+					+ "Khdam essuie-glace.");
+		} else if (currentWeather == "FOG") {
 			latitude -= 1;
 			System.out.println("JetPlane#" + this.name + "(" + this.id + "): "
-					+ "Khdam do dial dbaba la dkhol fina chi tayara.");
-		}
-		if (currentWeather == "SNOW") {
+					+ "Chkon 3mar l RGB kamla, rah makaybanli walo.");
+		} else if (currentWeather == "SNOW") {
 			height -= 7;
 			System.out.println("JetPlane#" + this.name + "(" + this.id + "): "
-					+ "Ara chi zlafa dial lbissara nsakhno biha.");
+					+ "Ara chi zlafa dial lbissara, hiya li gha tsla7 m3a had lbard.");
 		}
 		if (height > 100)
 			height = 100;
-		this.coordinates = new Coordinates(
-				longitude, latitude, height);
+		this.coordinates = new Coordinates(longitude, latitude, height);
 	}
 
 	@Override

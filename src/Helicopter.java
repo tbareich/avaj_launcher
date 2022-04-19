@@ -16,7 +16,7 @@ public class Helicopter extends Aircraft implements Flyable {
 
 		if (height < 0) {
 			System.out.println("Helicopter#" + this.name + "(" + this.id + "): "
-					+ "Rahna habtin.");
+					+ "Khwiw tri9, Rah jaw li kayklo lcouscous blfarchita.");
 			this.weatherTower.unregister(this);
 			this.weatherTower = null;
 			return;
@@ -26,26 +26,22 @@ public class Helicopter extends Aircraft implements Flyable {
 			height += 2;
 			System.out.println("Helicopter#" + this.name + "(" + this.id + "): "
 					+ "Had ljaw ghir dial chi tab7ira f saidia.");
-		}
-		if (currentWeather == "RAIN") {
+		} else if (currentWeather == "RAIN") {
 			longitude += 5;
 			System.out.println("Helicopter#" + this.name + "(" + this.id + "): "
-					+ "Wa chtiwa hadi, khit mn sma, khassha ghir chi 9hiwa.");
-		}
-		if (currentWeather == "FOG") {
+					+ "Wa chtiwa hadi.");
+		} else if (currentWeather == "FOG") {
 			longitude -= 1;
 			System.out.println("Helicopter#" + this.name + "(" + this.id + "): "
-					+ "Chof wach kaybanlk chi 7aja, rah ana ma9ache3 walo.");
-		}
-		if (currentWeather == "SNOW") {
+					+ "Fin lmatar rah makayban liya walo.");
+		} else if (currentWeather == "SNOW") {
 			height -= 12;
 			System.out.println("Helicopter#" + this.name + "(" + this.id + "): "
-					+ "Sad dak charjam wjib lmanta, rah rassi znad 3liya blbard!");
+					+ "Ach had lbard, rassi znad 3liya!");
 		}
 		if (height > 100)
 			height = 100;
-		this.coordinates = new Coordinates(
-				longitude, latitude, height);
+		this.coordinates = new Coordinates(longitude, latitude, height);
 	}
 
 	@Override
