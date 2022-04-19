@@ -10,6 +10,10 @@ public class Simulator {
 	public static void main(String[] args) {
 		try {
 			WeatherTower weatherTower = new WeatherTower();
+			if (args.length != 1) {
+				System.out.println("Error: Wrong length of arguments.");
+				return;
+			}
 			int simulationLength = parseFile(args[0], weatherTower);
 			while (--simulationLength >= 0)
 				weatherTower.changeWeather();
@@ -50,7 +54,8 @@ public class Simulator {
 					continue;
 				}
 				match = line.matches(
-						"^(Baloon|JetPlane|Helicopter)+ [A-z0-9]+ \\d+ \\d+ \\d+$");
+						"^(Baloon|JetPlane|Helicopter)+ " +
+								"[A-z0-9]+ \\d+ \\d+ \\d+$");
 				if (match == false) {
 					scanner.close();
 					throw new InvalidFileFormat(lineIndex);
