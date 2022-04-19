@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,17 +9,22 @@ import exceptions.InvalidFileFormat;
 
 public class Simulator {
 	public static void main(String[] args) {
+		System.setErr(System.out);
 		if (args.length != 1) {
 			System.out.println("Error: wrong length of arguments.");
 			return;
 		}
 		try {
+			PrintStream fileOut = new PrintStream("simulation.txt");
+			System.setOut(fileOut);
 			WeatherTower weatherTower = new WeatherTower();
 			int simulationLength = parseFile(args[0], weatherTower);
 			while (--simulationLength >= 0)
 				weatherTower.changeWeather();
 		} catch (Exception e) {
-			System.out.println("Error: " + e.getMessage());
+			File file = new File("simulation.txt");
+			file.delete();
+			System.err.println("Error: " + e.getMessage());
 		}
 	}
 
