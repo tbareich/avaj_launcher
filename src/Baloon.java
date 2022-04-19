@@ -37,7 +37,7 @@ public class Baloon extends Aircraft implements Flyable {
 				height = 100;
 		} else {
 			System.out.println("Baloon#" + this.name + "(" + this.id + "): "
-					+ "Anhabto ghir bchwiya, lazrba 3la sla7.");
+					+ "landing.");
 			this.weatherTower.unregister(this);
 			this.weatherTower = null;
 			return;
