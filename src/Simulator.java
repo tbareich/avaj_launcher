@@ -60,7 +60,7 @@ public class Simulator {
 					continue;
 				}
 				match = line.matches(
-						"^(Baloon|JetPlane|Helicopter)+ " +
+						"^(Baloon|JetPlane|Helicopter) " +
 								"[A-z0-9]+ \\d+ \\d+ \\d+$");
 				if (match == false) {
 					scanner.close();
