@@ -7,8 +7,9 @@ public class WeatherProvider {
 	}
 
 	public static WeatherProvider getProvider() {
-		return weatherProvider == null ? new WeatherProvider()
+		weatherProvider = weatherProvider == null ? new WeatherProvider()
 				: weatherProvider;
+		return weatherProvider;
 	}
 
 	public String getCurrentWeather(Coordinates coordinates) {
